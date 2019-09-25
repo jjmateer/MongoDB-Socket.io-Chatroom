@@ -64,6 +64,6 @@ mongoose.connect(dbUrl ,(err) => {
 })
 
 var server = http.listen(3000, () => {
-  console.log('server is running on: http://localhost:', server.address().port);
+  console.log('server is running on: http://localhost', server.address().port);
 });
 

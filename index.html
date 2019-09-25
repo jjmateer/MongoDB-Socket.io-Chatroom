@@ -10,7 +10,7 @@
   <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-<div class="container">
+<form id="messageForm" class="container">
  <br>
  <div class="jumbotron">
  <h1 class="display-4">Send Message</h1>
@@ -24,13 +24,14 @@
  </div>
  <div id="messages">
  
-</div>
+ </form>
 </div>
 <script>
   var socket = io();
    $(() => {
        $("#send").click(()=>{
            sendMessage({name: $("#name").val(), message: $("#message").val()});
+           $("#messageForm").trigger("reset");
        })
        getMessages()
    })
