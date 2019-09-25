@@ -8,6 +8,7 @@
   crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="logic.js"></script>
 </head>
 <body>
 <form id="messageForm" class="container">
@@ -26,28 +27,5 @@
  
  </form>
 </div>
-<script>
-  var socket = io();
-   $(() => {
-       $("#send").click(()=>{
-         event.preventDefault();
-           sendMessage({name: $("#name").val(), message: $("#message").val()});
-           $("#messageForm").trigger("reset");
-       })
-       getMessages()
-   })
-   socket.on('message', addMessages)
-   function addMessages(message){
-       $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
-   }
-   function getMessages(){
-     $.get('http://localhost:3000/messages', (data) => {
-       data.forEach(addMessages);
-     })
-   }
-   function sendMessage(message){
-     $.post('http://localhost:3000/messages', message)
-   }
-</script>
 </body>
 </html>
