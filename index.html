@@ -30,6 +30,7 @@
   var socket = io();
    $(() => {
        $("#send").click(()=>{
+         event.preventDefault();
            sendMessage({name: $("#name").val(), message: $("#message").val()});
            $("#messageForm").trigger("reset");
        })
