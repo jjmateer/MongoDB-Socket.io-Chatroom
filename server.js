@@ -14,7 +14,7 @@ var Message = mongoose.model('Message',{
   message : String
 })
 
-var dbUrl = 'mongodb+srv://jjmateer:manila22@cluster0-q0kab.mongodb.net/test?retryWrites=true&w=majority'
+var dbUrl = 'mongodb+srv://jjmateer:manila22@cluster0-q0kab.mongodb.net/chatroomDB?retryWrites=true&w=majority'
 
 app.get('/messages', (req, res) => {
   Message.find({},(err, messages)=> {
@@ -55,10 +55,8 @@ app.post('/messages', async (req, res) => {
 
 })
 
-
-
 io.on('connection', () =>{
-  console.log('a user is connected')
+  console.log('User connected')
 })
 
 mongoose.connect(dbUrl ,(err) => {
@@ -66,6 +64,6 @@ mongoose.connect(dbUrl ,(err) => {
 })
 
 var server = http.listen(3000, () => {
-  console.log('server is running on port', server.address().port);
+  console.log('server is running on: http://localhost:', server.address().port);
 });
 
